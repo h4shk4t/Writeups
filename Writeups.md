@@ -1,20 +1,20 @@
 # Writeups And Cheatsheets
 
-##Cheatsheets
+## Cheatsheets
 
-###SSTI Cheatsheets
+### SSTI Cheatsheets
 https://pequalsnp-team.github.io/cheatsheet/flask-jinja2-ssti
 [Common object/var names added in a template (for fuzzing) use Burp or Zap](https://raw.githubusercontent.com/albinowax/SecLists/9309803f3f7d5c1e0b2f26721c1ea7ef36eeb1c8/Discovery/Web_Content/burp-parameter-names)
 [Filter Evasion](https://medium.com/@nyomanpradipta120/jinja2-ssti-filter-bypasses-a8d3eb7b000f)
 
-##Writeups
+## Writeups
 
-###Sequel_Sequel (SFTP Jail)
+### Sequel_Sequel (SFTP Jail)
 There was an SFTP server on which there were configs for mysql. MySQL was running locally and we couldnt access it from the outside. To access it we would use SSH for port forwarding. But SSH was configured not to allow commands to be sent, so to prevent an error we passed -N flag. -L flag for port forwarding.
 
 ```$ ssh -p 42022 -N -L 3306:127.0.0.1:3306 ethan@chal.imaginaryctf.org```
 
-###Democracy (Tor Web Challenge)
+### Democracy (Tor Web Challenge)
 BTW Tor was not the intended solution.
 We needed to cast votes with a unique IP and unique account in this challenge to our account to have the highest votes to our account. This was done by automating creating of tor sessions in python 15 times in the script and sending requests with random accounts (created every time in the loop)
 ```python
@@ -62,7 +62,7 @@ sudo service tor start
 pip3 install stem
 ```
 
-###SSTI Golf
+### SSTI Golf
 Source Code:
 ```python
 #!/usr/bin/env python3
@@ -156,7 +156,7 @@ Best Solution (You can use nl instead of cat here):
 
 nl takes the lines of the file in the stdin and outputs the lines with their respective number in the stdout.
 
-###Honksay (MapleCTF)
+### Honksay (MapleCTF)
 
 Some Assembly Required (Deobfuscation and wasm challenge)
 We used jsnice.org for deobfuscating… Highly recommended.
@@ -214,7 +214,7 @@ function onButtonPress() {
 
 We can use the developer tools to set navigatePop (any name would work) to global function ```_0x4e0e```. And you can use navigatePop in developer tools to figure out the results. Soon you will get the name of the wasm file and on using wabt tools you can easily find out the flag. Please try to understand how web assembly works as well.
 
-###CakeGear
+### CakeGear
 
 Code Snippet:
 ```php
@@ -297,5 +297,3 @@ Result:
         </tbody></table>
     </body>
 </html>
-
-
