@@ -24,5 +24,6 @@ for guess, url in messages.items():
     if status == 404:
         flag = guess
         print("Found match", flag)
-        break```
+        break
+```
 https://snyk.io/blog/fetch-the-flag-ctf-2022-writeup-disposable-message/
